@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular Form Validation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" ng-app="myApp" ng-controller="FormController">
+        <div class="textintro">
+            <h1>Form Validation</h1>
+            <p ng-show="msg">{{ msg }}</p>
+        </div>
+        <form name="myform" ng-submit="register()">
+            <input type="text" name="firstname" placeholder="Firstname" ng-model="user.firstname" ng-required="true">
+            <p class="error" ng-show="myform.firstname.$invalid && myform.firstname.$touched">Fill out the Firstname</p>
+
+            <input type="text" name="lastname" placeholder="Lastname" ng-model="user.lastname" ng-required="true">
+            <p class="error" ng-show="myform.lastname.$invalid && myform.lastname.$touched">Fill out the Lastname</p>
+
+            <input type="email" name="email" placeholder="Email" ng-model="user.email" ng-required="true">
+            <p class="error" ng-show="myform.email.$invalid && myform.email.$touched">Enter correct Email Id</p>
+
+            <input type="password" name="password" placeholder="Password" ng-model="user.password"  ng-minlength="6" ng-required="true">
+            <p class="error" ng-show="myform.password.$invalid && myform.password.$touched">Password to be atleast 6 characters long</p>
+
+            <input type="number" name="phone" placeholder="Phone Number" ng-model="user.phone" ng-required="true">
+            <p class="error" ng-show="myform.phone.$invalid && myform.phone.$touched">Fill out the Phonenumber</p>
+
+            <button type="submit" class="btn" ng-disabled="myform.$invalid">SUBMIT</button>
+        </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js" type="text/javascript"></script>
+    <script src="app.js" type="text/javascript"></script>
+</body>
+</html>
